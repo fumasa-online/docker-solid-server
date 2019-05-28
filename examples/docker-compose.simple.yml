@@ -8,7 +8,7 @@
 version: '3.7'
 services:
   server:
-    image: aveltens/solid-server:latest # (!) use specific version tag here
+    image: fumasa/solid-server:latest # (!) use specific version tag here
 
     # this ensures automatic container start, when host reboots
     restart: always
@@ -25,10 +25,10 @@ services:
 
       # (!) mount existing TLS certificates, e.g. from letsencrypt
       # (!) ensure that the key and fullchain files are readable by UID 1000
-      - /etc/letsencrypt/live/solid.example/:/opt/solid/certs
+      - /etc/letsencrypt/live/fumasa.online/:/opt/solid/certs
 
     environment:
       # (!) use your actual SOLID_SERVER_URI
-      - "SOLID_SERVER_URI=https://solid.example"
+      - "SOLID_SERVER_URI=https://fumasa.online"
       - "SOLID_SSL_KEY=/opt/solid/certs/key.pem"
       - "SOLID_SSL_CERT=/opt/solid/certs/fullchain.pem"

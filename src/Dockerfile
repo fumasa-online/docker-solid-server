@@ -2,7 +2,9 @@ FROM node:10-alpine
 
 RUN apk add --no-cache openssl
 
-RUN npm install -g solid-server@5.1.0
+RUN apk add --no-cache git
+
+RUN npm install -g fumasa-online/node-solid-server#master
 
 # image configuration
 ENV SOLID_HOME=/opt/solid

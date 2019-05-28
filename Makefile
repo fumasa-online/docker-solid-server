@@ -2,13 +2,13 @@ test: ## run testinfra tests against the project
 	docker run --rm -t \
 		-v $(shell pwd):/project \
 		-v /var/run/docker.sock:/var/run/docker.sock:ro \
-		aveltens/docker-testinfra
+		fumasa/docker-testinfra
 
 build: ## build the docker image
-	docker build --file ./src/Dockerfile --tag aveltens/solid-server .
+	docker build --file ./src/Dockerfile --tag fumasa/solid-server .
 
 inspect: build ## run a shell in the docker image
-	docker run --rm -it --entrypoint sh aveltens/solid-server
+	docker run --rm -it --entrypoint sh fumasa/solid-server
 
 start: build ## start solid-server docker container
 	docker run --rm \
@@ -17,7 +17,7 @@ start: build ## start solid-server docker container
 		-u "$(id -u):$(id -g)" \
 		-v $(shell pwd)/data:/opt/solid/data \
 		--name solid-server \
-		aveltens/solid-server
+		fumasa/solid-server
 
 stop: ## stop the solid-server docker container
 	docker stop solid-server

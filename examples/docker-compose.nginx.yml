@@ -15,7 +15,7 @@
 version: '3.7'
 services:
   server:
-    image: aveltens/solid-server:latest # (!) use specific version tag here
+    image: fumasa/solid-server:latest # (!) use specific version tag here
 
     # this ensures automatic container start, when host reboots
     restart: always
@@ -33,17 +33,17 @@ services:
 
     environment:
       # (!) use your actual SOLID_SERVER_URI
-      - "SOLID_SERVER_URI=https://solid.example"
+      - "SOLID_SERVER_URI=https://fumasa.online"
       # (!) adjust path to the letsencrypt key and cert
-      - "SOLID_SSL_KEY=/opt/solid/certs/solid.example/key.pem"
-      - "SOLID_SSL_CERT=/opt/solid/certs/solid.example/fullchain.pem"
+      - "SOLID_SSL_KEY=/opt/solid/certs/fumasa.online/key.pem"
+      - "SOLID_SSL_CERT=/opt/solid/certs/fumasa.online/fullchain.pem"
       # (!) use your actual host name
-      - "VIRTUAL_HOST=solid.example"
+      - "VIRTUAL_HOST=fumasa.online"
       - "VIRTUAL_PORT=8443"
       - "VIRTUAL_PROTO=https"
       # (!) use your actual host name
-      - "LETSENCRYPT_HOST=solid.example"
-      - "LETSENCRYPT_EMAIL=your@mail.example"
+      - "LETSENCRYPT_HOST=fumasa.online"
+      - "LETSENCRYPT_EMAIL=rafael@fumasa.org"
 volumes:
   # (!) mount certificates from an external volume from your nginx setup
   nginxproxy_certs:
